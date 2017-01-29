@@ -5,10 +5,11 @@
 	<artifactId>makemytrip-testsuite</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-<properties>
+	<properties>
 		<testng.version>6.10</testng.version>
 		<selenium.java.version>2.53.0</selenium.java.version>
 		<appium.java.version>4.1.1</appium.java.version>
+		<sl4j.version>1.7.21</sl4j.version>
 	</properties>
 
 	<dependencies>
@@ -26,6 +27,11 @@
 			<groupId>io.appium</groupId>
 			<artifactId>java-client</artifactId>
 			<version>${appium.java.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${sl4j.version}</version>
 		</dependency>
 	</dependencies>
 
