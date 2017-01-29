@@ -14,6 +14,9 @@ import com.makemytrip.objectrepository.FlightDetails;
 
 import static com.makemytrip.driver.DriverUtils.*;
 
+import com.makemytrip.objectrepository.AddMeals;
+import com.makemytrip.objectrepository.CreditCardInformation;
+import com.makemytrip.objectrepository.PaymentMode;
 import com.makemytrip.objectrepository.SearchFlights;
 import com.makemytrip.objectrepository.FlightResults;
 import com.makemytrip.objectrepository.TravellerDetails;
@@ -54,7 +57,58 @@ public class FlightBooking {
 		press(TravellerDetails.btn_AddNewAdult(driver));
 		setValue(TravellerDetails.txt_FirstName(driver), "passinger");
 		setValue(TravellerDetails.txt_LastName(driver), "one");
+		press(TravellerDetails.btn_Done(driver));
+		setValue(TravellerDetails.txt_Email(driver), "abc@gmail.com");
+		hideKeyBoard(driver);
+		setValue(TravellerDetails.txt_PhoneNumber(driver), "9876543210");
+		hideKeyBoard(driver);
 		
+		//click on Book Flight button
+		press(TravellerDetails.btn_BookFlight(driver));
+		
+		//click on remove insurance button in popup
+		press(TravellerDetails.btn_RemoveInsurance(driver));
+		
+		//handling for fare increase popup
+		if(TravellerDetails.btn_FareIncrease_Continue(driver).isDisplayed()) {
+			press(TravellerDetails.btn_FareIncrease_Continue(driver));
+		}
+		
+		//click on skip button
+		press(AddMeals.btn_Skip(driver));
+		
+		//click on credit card option
+		press(PaymentMode.btn_CreditCard(driver));
+		
+		//Enter credit card information
+		setValue(CreditCardInformation.txt_CardNumber(driver), "5555555555554444");
+		setValue(CreditCardInformation.txt_NameonCard(driver), "Abc");
+		
+		press(CreditCardInformation.lst_ExpiryMonth(driver));
+		press(CreditCardInformation.lst_Value(driver, "January (01)"));
+		
+		press(CreditCardInformation.lst_ExpiryYear(driver));
+		press(CreditCardInformation.lst_Value(driver, "2020"));
+		
+		setValue(CreditCardInformation.txt_Cvv(driver), "183");
+		hideKeyBoard(driver);
+		
+		//Enter billing details
+		if(CreditCardInformation.lst_SelectCountry(driver).isDisplayed()) {
+			press(CreditCardInformation.lst_SelectCountry(driver));
+			press(CreditCardInformation.lst_Value(driver, "India"));
+			
+			setValue(CreditCardInformation.txt_State(driver), "UP");
+			hideKeyBoard(driver);
+			setValue(CreditCardInformation.txt_City(driver), "noida");
+			hideKeyBoard(driver);
+			setValue(CreditCardInformation.txt_BillingAddress(driver), "sector 65");
+			hideKeyBoard(driver);
+			setValue(CreditCardInformation.txt_ZipCode(driver), "201301");
+			hideKeyBoard(driver);
+		}
+		
+		press(CreditCardInformation.btn_Continue(driver));
 		Thread.sleep(20000);
 	}
 	

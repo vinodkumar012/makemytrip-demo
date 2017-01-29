@@ -26,7 +26,7 @@ public class DriverManager {
 		androidCapabilities.setCapability("appActivity", appActivity);
 		androidCapabilities.setCapability("deviceName", deviceName);
 		File baseApkPath = new File(System.getProperty("user.dir") + File.separator + "src" + File.separator + "test" + File.separator + "resources");
-		//androidCapabilities.setCapability("app", new File(baseApkPath + File.separator + apkFileName).getAbsolutePath());
+		androidCapabilities.setCapability("app", new File(baseApkPath + File.separator + apkFileName).getAbsolutePath());
 		AppiumDriver driver = new AndroidDriver(new URL(nodeURL),androidCapabilities);
 		LOGGER.info("Initiated driver with capabilities as : " + androidCapabilities);
 		return driver;
