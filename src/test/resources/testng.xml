@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="SearchFlight_Suite">
+    <test name="SearchFlight_Android_Native">
+        <parameters>
+            <parameter name="platformName" value="Android" />
+            <parameter name="browserName" value="Android" />
+            <parameter name="version" value="6.0.1" />
+            <parameter name="appPackage" value="com.makemytrip" />
+            <parameter name="appActivity" value="com.mmt.travel.app.flight.ui.search.flightsearch.FlightSearch" />
+            <parameter name="deviceName" value="4d00b3704a264127" />
+            <parameter name="apkFileName" value="com.makemytrip.apk" />
+            <parameter name="nodeURL" value="http://127.0.0.1:4723/wd/hub" />
+        </parameters>
+        <classes>
+            <class name="com.makemytrip.testcases.FlightBooking">
+                <methods>
+                    <include name="flightSearch_Search_Book_Continue_EnterDetails_BookFlight_RemoveInsurance_CreditCard_EnterCCDetails_Verify_Continue" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
