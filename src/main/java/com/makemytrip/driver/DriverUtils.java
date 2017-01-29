@@ -9,9 +9,10 @@ import org.slf4j.LoggerFactory;
 public class DriverUtils {
 	private static final Logger LOGGER = LoggerFactory.getLogger(DriverUtils.class);
 
-	public static void setValue(WebElement element, String value) {
+	public static void setValue(AppiumDriver driver, WebElement element, String value) {
 		LOGGER.info("Entering- " + value + " -in text box");
 		element.sendKeys(value);
+		driver.hideKeyboard();
 	}
 	
 	public static void press(WebElement eleemnt) {
@@ -19,8 +20,4 @@ public class DriverUtils {
 		eleemnt.click();
 	}
 	
-	public static void hideKeyBoard(AppiumDriver<WebElement> driver) {
-		driver.hideKeyboard();
-	}
-
 }

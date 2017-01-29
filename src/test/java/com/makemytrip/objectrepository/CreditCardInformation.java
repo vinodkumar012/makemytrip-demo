@@ -54,5 +54,13 @@ public class CreditCardInformation {
 		return ElementUtils.returnElementById(driver, "continue_textView", new Object(){}.getClass().getEnclosingMethod().getName());
 	}
 	
+	public static WebElement lbl_PaymentFailure(AppiumDriver driver) {
+		return ElementUtils.returnElementById(driver, "payment_failure_textView", new Object(){}.getClass().getEnclosingMethod().getName());
+	}
+	
+	public static WebElement btn_PaymentFailure_OK(AppiumDriver driver) {
+		return ElementUtils.returnElementById(driver, "payment_failure_ok_button", new Object(){}.getClass().getEnclosingMethod().getName());
+	}
+	
 
 }

@@ -4,6 +4,8 @@ import io.appium.java_client.AppiumDriver;
 
 import java.net.MalformedURLException;
 
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -55,13 +57,11 @@ public class FlightBooking {
 		
 		//Enter passinger details
 		press(TravellerDetails.btn_AddNewAdult(driver));
-		setValue(TravellerDetails.txt_FirstName(driver), "passinger");
-		setValue(TravellerDetails.txt_LastName(driver), "one");
+		setValue(driver, TravellerDetails.txt_FirstName(driver), "passinger");
+		setValue(driver, TravellerDetails.txt_LastName(driver), "one");
 		press(TravellerDetails.btn_Done(driver));
-		setValue(TravellerDetails.txt_Email(driver), "abc@gmail.com");
-		hideKeyBoard(driver);
-		setValue(TravellerDetails.txt_PhoneNumber(driver), "9876543210");
-		hideKeyBoard(driver);
+		setValue(driver, TravellerDetails.txt_Email(driver), "abc@gmail.com");
+		setValue(driver, TravellerDetails.txt_PhoneNumber(driver), "9876543210");
 		
 		//click on Book Flight button
 		press(TravellerDetails.btn_BookFlight(driver));
@@ -81,8 +81,8 @@ public class FlightBooking {
 		press(PaymentMode.btn_CreditCard(driver));
 		
 		//Enter credit card information
-		setValue(CreditCardInformation.txt_CardNumber(driver), "5555555555554444");
-		setValue(CreditCardInformation.txt_NameonCard(driver), "Abc");
+		setValue(driver, CreditCardInformation.txt_CardNumber(driver), "5555555555554444");
+		setValue(driver, CreditCardInformation.txt_NameonCard(driver), "Abc");
 		
 		press(CreditCardInformation.lst_ExpiryMonth(driver));
 		press(CreditCardInformation.lst_Value(driver, "January (01)"));
@@ -90,26 +90,26 @@ public class FlightBooking {
 		press(CreditCardInformation.lst_ExpiryYear(driver));
 		press(CreditCardInformation.lst_Value(driver, "2020"));
 		
-		setValue(CreditCardInformation.txt_Cvv(driver), "183");
-		hideKeyBoard(driver);
+		setValue(driver, CreditCardInformation.txt_Cvv(driver), "183");
 		
 		//Enter billing details
 		if(CreditCardInformation.lst_SelectCountry(driver).isDisplayed()) {
 			press(CreditCardInformation.lst_SelectCountry(driver));
 			press(CreditCardInformation.lst_Value(driver, "India"));
 			
-			setValue(CreditCardInformation.txt_State(driver), "UP");
-			hideKeyBoard(driver);
-			setValue(CreditCardInformation.txt_City(driver), "noida");
-			hideKeyBoard(driver);
-			setValue(CreditCardInformation.txt_BillingAddress(driver), "sector 65");
-			hideKeyBoard(driver);
-			setValue(CreditCardInformation.txt_ZipCode(driver), "201301");
-			hideKeyBoard(driver);
+			setValue(driver, CreditCardInformation.txt_State(driver), "UP");
+			setValue(driver, CreditCardInformation.txt_City(driver), "noida");
+			setValue(driver, CreditCardInformation.txt_BillingAddress(driver), "sector 65");
+			setValue(driver, CreditCardInformation.txt_ZipCode(driver), "201301");
 		}
 		
 		press(CreditCardInformation.btn_Continue(driver));
-		Thread.sleep(20000);
+		
+		//validation of payment failure message
+		Assert.assertTrue(CreditCardInformation.lbl_PaymentFailure(driver).isDisplayed());
+		Assert.assertEquals("Payment Failure", CreditCardInformation.lbl_PaymentFailure(driver).getText());
+		
+		press(CreditCardInformation.btn_PaymentFailure_OK(driver));
 	}
 	
 	@AfterClass
