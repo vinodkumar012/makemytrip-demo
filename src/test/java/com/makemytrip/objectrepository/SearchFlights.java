@@ -4,6 +4,8 @@ import io.appium.java_client.AppiumDriver;
 
 import org.openqa.selenium.WebElement;
 
+import com.makemytrip.element.ElementUtils;
+
 public class SearchFlights {
 	
 	public static WebElement btn_Search(AppiumDriver driver) {
@@ -33,9 +35,5 @@ public class SearchFlights {
 	public static WebElement btn_Calendar_OK(AppiumDriver driver) {
 		return ElementUtils.returnElementById(driver, "calOK", new Object(){}.getClass().getEnclosingMethod().getName());
 	}
-	
-	
-	
-	
 
 }

@@ -1,10 +1,11 @@
 package com.makemytrip.testcases;
 
+import static com.makemytrip.driver.DriverUtils.press;
+import static com.makemytrip.driver.DriverUtils.setValue;
 import io.appium.java_client.AppiumDriver;
 
 import java.net.MalformedURLException;
 
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -12,15 +13,12 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.makemytrip.driver.DriverManager;
-import com.makemytrip.objectrepository.FlightDetails;
-
-import static com.makemytrip.driver.DriverUtils.*;
-
 import com.makemytrip.objectrepository.AddMeals;
 import com.makemytrip.objectrepository.CreditCardInformation;
+import com.makemytrip.objectrepository.FlightDetails;
+import com.makemytrip.objectrepository.FlightResults;
 import com.makemytrip.objectrepository.PaymentMode;
 import com.makemytrip.objectrepository.SearchFlights;
-import com.makemytrip.objectrepository.FlightResults;
 import com.makemytrip.objectrepository.TravellerDetails;
 
 public class FlightBooking {
@@ -36,8 +34,8 @@ public class FlightBooking {
 	public void flightSearch_Search_Book_Continue_EnterDetails_BookFlight_RemoveInsurance_CreditCard_EnterCCDetails_Verify_Continue() throws InterruptedException {
 		//commenting below lines as application is hanging while entering values in departure and arrival cities
 		
-		/*setValue(SearchFlights.txt_From(driver), "DEL - Indira Gandhi International Airport");
-		setValue(SearchFlights.txt_To(driver), "BOM - Chhatrapati Shivaji International Airport");*/
+		/*setValue(driver, SearchFlights.txt_From(driver), "DEL - Indira Gandhi International Airport");
+		setValue(driver, SearchFlights.txt_To(driver), "BOM - Chhatrapati Shivaji International Airport");*/
 		
 		// selectin departure and return date based on current date, i.e. currdate+5 as departure and currdate+8 as return date 
 		press(SearchFlights.txt_DepartDate(driver));

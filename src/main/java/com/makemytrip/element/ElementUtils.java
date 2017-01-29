@@ -1,4 +1,4 @@
-package com.makemytrip.objectrepository;
+package com.makemytrip.element;
 
 import io.appium.java_client.AppiumDriver;
 
@@ -15,7 +15,7 @@ public class ElementUtils {
 	
 	private static final int EXPLICIT_WAIT = 30;
 	
-	static WebElement returnElementById(AppiumDriver driver, String id, String methodName) {
+	public static WebElement returnElementById(AppiumDriver driver, String id, String methodName) {
 		LOGGER.info("waitElementVisible() : waiting for visibility of element"); 
 		WebDriverWait wait = new WebDriverWait(driver, EXPLICIT_WAIT);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(id)));
@@ -23,7 +23,7 @@ public class ElementUtils {
 		return driver.findElementById(id);
 	}
 	
-	static WebElement returnElementByXpath(AppiumDriver driver, String xpath, String methodName) {
+	public static WebElement returnElementByXpath(AppiumDriver driver, String xpath, String methodName) {
 		LOGGER.info("waitElementVisible() : waiting for visibility of element"); 
 		WebDriverWait wait = new WebDriverWait(driver, EXPLICIT_WAIT);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
@@ -31,7 +31,7 @@ public class ElementUtils {
 		return driver.findElementByXPath(xpath);
 	}
 	
-	static WebElement returnElementByName(AppiumDriver driver, String name, String methodName) {
+	public static WebElement returnElementByName(AppiumDriver driver, String name, String methodName) {
 		LOGGER.info("waitElementVisible() : waiting for visibility of element"); 
 		WebDriverWait wait = new WebDriverWait(driver, EXPLICIT_WAIT);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(name)));

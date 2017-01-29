@@ -4,6 +4,8 @@ import io.appium.java_client.AppiumDriver;
 
 import org.openqa.selenium.WebElement;
 
+import com.makemytrip.element.ElementUtils;
+
 public class FlightDetails {
 	
 	public static WebElement btn_Continue(AppiumDriver driver) {
