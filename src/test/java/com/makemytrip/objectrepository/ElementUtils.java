@@ -9,9 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LocatorUtils {
+public class ElementUtils {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(LocatorUtils.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ElementUtils.class);
 	
 	private static final int EXPLICIT_WAIT = 30;
 	
@@ -29,6 +29,14 @@ public class LocatorUtils {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 		LOGGER.info("returning " + methodName + " object");
 		return driver.findElementByXPath(xpath);
+	}
+	
+	static WebElement returnElementByName(AppiumDriver driver, String name, String methodName) {
+		LOGGER.info("waitElementVisible() : waiting for visibility of element"); 
+		WebDriverWait wait = new WebDriverWait(driver, EXPLICIT_WAIT);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(name)));
+		LOGGER.info("returning " + methodName + " object");
+		return driver.findElementByName(name);
 	}
 
 }
