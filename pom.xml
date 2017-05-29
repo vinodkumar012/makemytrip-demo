@@ -7,7 +7,7 @@
 
 	<properties>
 		<testng.version>6.10</testng.version>
-		<selenium.java.version>2.53.1</selenium.java.version>
+		<selenium.java.version>2.53.2</selenium.java.version>
 		<appium.java.version>4.1.1</appium.java.version>
 		<sl4j.version>1.7.21</sl4j.version>
 	</properties>
